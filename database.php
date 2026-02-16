@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "mobileapps_2026B_zahara_harouna";
+$database = "student_api";
 
 $conn = new mysqli($host, $username, $password, $database);
 
