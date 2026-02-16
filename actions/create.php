@@ -8,9 +8,9 @@ if (!$name || !$phone || !$email) {
     echo json_encode(["success" => false, "error" => "Missing required fields"]);
     exit();
 }
-$sql = "INSERT INTO students (name, phone, email) VALUES ('$name', '$phone', '$email')";
+$sql = "INSERT INTO students (name, phone, email) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $name, $phone);
+$stmt->bind_param("sss", $name, $phone, $email);
 if ($stmt->execute()) {
     echo json_encode(["success" => true, "data"=>["id" => $conn->insert_id, "name" => $name, "phone" => $phone, "email" => $email]
     ]);
